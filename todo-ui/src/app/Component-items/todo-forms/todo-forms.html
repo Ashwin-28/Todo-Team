@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="title" placeholder="Enter todo" />
+
+  <div *ngIf="form.controls['title'].invalid && form.controls['title'].touched">
+  Minimum 3 characters required
+</div>
+
+  <button type="submit">Add</button>
+</form>
