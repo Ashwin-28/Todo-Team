@@ -1,0 +1,16 @@
+<div>
+  <button (click)="setFilter('all')">All</button>
+  <button (click)="setFilter('active')">Active</button>
+  <button (click)="setFilter('completed')">Completed</button>
+</div>
+
+<div *ngIf="loading$ | async">Loading...</div>
+<div *ngIf="error$ | async as err">{{ err }}</div>
+
+<ul>
+  <li *ngFor="let todo of filteredTodos$ | async">
+    <input type="checkbox" [checked]="todo.completed" (change)="toggle(todo)" />
+    {{ todo.title }}
+    <button (click)="delete(todo.id)">Delete</button>
+  </li>
+</ul>
